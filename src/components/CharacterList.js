@@ -49,7 +49,7 @@ const CharacterList = () => {
           onClick={() => setPage(page - 1)}
           disabled={page === 1}
           mr={2}
-          colorScheme="pink"
+          colorScheme="purple"
           variant="outline"
           
         />
@@ -79,7 +79,7 @@ const CharacterList = () => {
           onClick={() => setPage(page - 1)}
           disabled={page === 1}
           mr={2}
-          colorScheme="pink"
+          colorScheme="purple"
           variant="outline"
         />
         <Text mx={2} fontWeight="bold" color="purple.700">Page {page}</Text>
