@@ -1,3 +1,30 @@
+# Star Wars Character Viewer
+This application is developed using React=to interact with the Star Wars API (SWAPI). It allows users to view information about Star Wars characters, mark them as favorites, and view detailed character information including the movies they appeared in.
+
+# Features
+Character Listing Screen
+Display a list of Star Wars characters fetched from the SWAPI endpoint.
+# Each character card includes:
+Character name
+Character image retrieved from SWAPI
+Favorite button to mark/unmark as favorite
+Pagination to navigate through the dataset.
+Character Detail Screen
+Clicking on a character card navigates to a detailed view.
+# Detailed view includes:
+Character name, height, mass, hair color, skin color, eye color, birth year, and gender.
+List of movies the character appeared in.
+# Technologies Used
+React
+Chakra UI
+SWAPI (Star Wars API)
+# Design Considerations
+The application is styled using Chakra UI to provide a visually appealing and responsive user interface. Design considerations focused on usability and seamless user experience across different screen sizes.
+
+# Deployment
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
