@@ -51,9 +51,7 @@ const CharacterList = () => {
      setPage(page+1)
     }
 }
-const disable=()=>{
 
-}
   if (loading) {
     return (
       <Flex justify="center" align="center" height="100vh">
