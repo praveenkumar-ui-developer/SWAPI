@@ -34,6 +34,26 @@ const CharacterList = () => {
       setFavorites(storedFavorites);
     }
   }, []);
+
+  const leftArrow=()=>{
+       if(page===1){
+          setPage(page)
+       }
+       else{
+        setPage(page-1)
+       }
+  }
+  const rightArrow=()=>{
+    if(page===9){
+       setPage(page)
+    }
+    else{
+     setPage(page+1)
+    }
+}
+const disable=()=>{
+
+}
   if (loading) {
     return (
       <Flex justify="center" align="center" height="100vh">
@@ -46,7 +66,7 @@ const CharacterList = () => {
        <Flex mt={0} justifyContent="center">
         <IconButton
           icon={<ArrowBackIcon />}
-          onClick={() => setPage(page - 1)}
+          onClick={leftArrow}
           disabled={page === 1}
           mr={2}
           colorScheme="pink"
@@ -56,7 +76,7 @@ const CharacterList = () => {
         <Text mx={2} fontWeight="bold" color="purple.700">Page {page}</Text>
         <IconButton
           icon={<ArrowForwardIcon />}
-          onClick={() => setPage(page + 1)}
+          onClick={rightArrow}
           disabled={characters.length < 10}
           ml={2}
           colorScheme="pink"
@@ -76,7 +96,7 @@ const CharacterList = () => {
       <Flex mt={5} justifyContent="center">
         <IconButton
           icon={<ArrowBackIcon />}
-          onClick={() => setPage(page - 1)}
+          onClick={leftArrow}
           disabled={page === 1}
           mr={2}
           colorScheme="pink"
@@ -85,8 +105,8 @@ const CharacterList = () => {
         <Text mx={2} fontWeight="bold" color="purple.700">Page {page}</Text>
         <IconButton
           icon={<ArrowForwardIcon />}
-          onClick={() => setPage(page + 1)}
-          disabled={characters.length < 10}
+          onClick={rightArrow}
+          isDisabled={characters.length < 10}
           ml={2}
           colorScheme="pink"
           variant="outline"
