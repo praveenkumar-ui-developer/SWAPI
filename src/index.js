@@ -1,17 +1,29 @@
+// src/index.js
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import ReactDOM from 'react-dom';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from '@chakra-ui/react';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <ChakraProvider>
-    <App />
-  </ChakraProvider>
-);
+import './index.css';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const theme = extendTheme({
+  colors: {
+    primary: {
+      100: "#E9D8FD",
+      200: "#D6BCFA",
+      300: "#B794F4",
+      400: "#9F7AEA",
+      500: "#805AD5",
+      600: "#6B46C1",
+      700: "#553C9A",
+      800: "#44337A",
+      900: "#322659",
+    },
+  },
+});
+
+ReactDOM.render(
+  <ChakraProvider theme={theme}>
+    <App />
+  </ChakraProvider>,
+  document.getElementById('root')
+);
