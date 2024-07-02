@@ -23,7 +23,7 @@ The application is styled using Chakra UI to provide a visually appealing and re
 
 # Deployment
 
-
+https://swapi-character.netlify.app/
 
 # Getting Started with Create React App
 
