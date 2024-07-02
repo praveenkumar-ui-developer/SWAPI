@@ -91,8 +91,31 @@ const CharacterList = () => {
               toggleFavorite={() => toggleFavorite(char.name)}
             />
           ))}
+
         </SimpleGrid>
       )}
+      <Flex mt={0} justifyContent="center">
+       {page===1? "" :<IconButton
+          icon={<ArrowBackIcon />}
+          onClick={leftArrow}
+          disabled={page === 1 || loading}
+          
+          mr={2}
+          colorScheme="pink"
+          variant="outline"
+        />
+       }
+        <Text mx={2} fontWeight="bold" color="purple.700">Page {page}</Text>
+        {(characters.length < 10)?"":<IconButton
+          icon={<ArrowForwardIcon />}
+          onClick={rightArrow}
+          disabled={characters.length < 10 || loading}
+          ml={2}
+          
+          colorScheme="pink"
+          variant="outline"
+        />}
+      </Flex>
     </Box>
   );
 };
