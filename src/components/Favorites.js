@@ -13,6 +13,7 @@ const FavoriteList = () => {
     setLoading(true);
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(storedFavorites);
+    console.log("Stored Favorites:", storedFavorites);
     setLoading(false);
   }, []);
 
