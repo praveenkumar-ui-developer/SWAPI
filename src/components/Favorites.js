@@ -11,7 +11,7 @@ const FavoriteList = () => {
 
   useEffect(() => {
     setLoading(true);
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const storedFavorites = JSON.parse(localStorage.getItem('liked')) || [];
     setFavorites(storedFavorites);
     console.log("Stored Favorites:", storedFavorites);
     setLoading(false);
@@ -20,7 +20,7 @@ const FavoriteList = () => {
   const removeFavorite = (character) => {
     const updatedFavorites = favorites.filter(fav => fav.name !== character.name);
     setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    localStorage.setItem('liked', JSON.stringify(updatedFavorites));
   };
 
   const leftArrow = () => {

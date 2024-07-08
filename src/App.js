@@ -8,7 +8,9 @@ import Navbar from './components/Navbar';
 import Favorites from './components/Favorites';
 
 function App() {
+  
   return (
+    
     <Router>
       <Navbar/>
       <Box p={5} bg="black" minH="100vh">
