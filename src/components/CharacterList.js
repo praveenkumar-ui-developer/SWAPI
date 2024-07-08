@@ -15,7 +15,7 @@ const CharacterList = () => {
   }, [page]);
 
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const storedFavorites = JSON.parse(localStorage.getItem('liked')) || [];
     setFavorites(storedFavorites);
   }, []);
 
@@ -36,7 +36,7 @@ const CharacterList = () => {
       ? favorites.filter(fav => fav.name !== character.name)
       : [...favorites, character];
     setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    localStorage.setItem('liked', JSON.stringify(updatedFavorites));
   };
 
   const leftArrow = () => {
