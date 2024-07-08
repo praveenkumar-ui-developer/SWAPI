@@ -5,6 +5,7 @@ import CharacterList from './components/CharacterList';
 import CharacterDetail from './components/CharacterDetail';
 import { Box } from '@chakra-ui/react';
 import Navbar from './components/Navbar';
+import Favorites from './components/Favorites';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<CharacterList />} />
           <Route path="/character/:id" element={<CharacterDetail />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </Box>
     </Router>

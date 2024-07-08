@@ -14,6 +14,11 @@ const CharacterList = () => {
     fetchCharacters(page);
   }, [page]);
 
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavorites(storedFavorites);
+  }, []);
+
   const fetchCharacters = async (page) => {
     setLoading(true);
     try {
@@ -27,19 +32,12 @@ const CharacterList = () => {
   };
 
   const toggleFavorite = (character) => {
-    const updatedFavorites = favorites.includes(character)
-      ? favorites.filter(fav => fav !== character)
+    const updatedFavorites = favorites.some(fav => fav.name === character.name)
+      ? favorites.filter(fav => fav.name !== character.name)
       : [...favorites, character];
     setFavorites(updatedFavorites);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
-
-  useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
-    if (storedFavorites) {
-      setFavorites(storedFavorites);
-    }
-  }, []);
 
   const leftArrow = () => {
     if (!loading && page > 1) {
@@ -54,28 +52,29 @@ const CharacterList = () => {
   };
 
   return (
-    <Box p={5}  minH="100vh">
+    <Box p={5} minH="100vh">
       <Flex mt={0} justifyContent="center">
-       {page===1? "" :<IconButton
-          icon={<ArrowBackIcon />}
-          onClick={leftArrow}
-          disabled={page === 1 || loading}
-          
-          mr={2}
-          colorScheme="pink"
-          variant="outline"
-        />
-       }
+        {page !== 1 && (
+          <IconButton
+            icon={<ArrowBackIcon />}
+            onClick={leftArrow}
+            disabled={loading}
+            mr={2}
+            colorScheme="pink"
+            variant="outline"
+          />
+        )}
         <Text mx={2} fontWeight="bold" color="purple.700">Page {page}</Text>
-        {(characters.length < 10)?"":<IconButton
-          icon={<ArrowForwardIcon />}
-          onClick={rightArrow}
-          disabled={characters.length < 10 || loading}
-          ml={2}
-          
-          colorScheme="pink"
-          variant="outline"
-        />}
+        {characters.length === 10 && (
+          <IconButton
+            icon={<ArrowForwardIcon />}
+            onClick={rightArrow}
+            disabled={loading}
+            ml={2}
+            colorScheme="pink"
+            variant="outline"
+          />
+        )}
       </Flex>
       {loading ? (
         <Flex justify="center" align="center" height="100vh">
@@ -87,34 +86,34 @@ const CharacterList = () => {
             <CharacterCard
               key={index}
               char={char}
-              isFavorite={favorites.includes(char.name)}
-              toggleFavorite={() => toggleFavorite(char.name)}
+              isFavorite={favorites.some(fav => fav.name === char.name)}
+              toggleFavorite={() => toggleFavorite(char)}
             />
           ))}
-
         </SimpleGrid>
       )}
       <Flex mt={0} justifyContent="center">
-       {page===1? "" :<IconButton
-          icon={<ArrowBackIcon />}
-          onClick={leftArrow}
-          disabled={page === 1 || loading}
-          
-          mr={2}
-          colorScheme="pink"
-          variant="outline"
-        />
-       }
+        {page !== 1 && (
+          <IconButton
+            icon={<ArrowBackIcon />}
+            onClick={leftArrow}
+            disabled={loading}
+            mr={2}
+            colorScheme="pink"
+            variant="outline"
+          />
+        )}
         <Text mx={2} fontWeight="bold" color="purple.700">Page {page}</Text>
-        {(characters.length < 10)?"":<IconButton
-          icon={<ArrowForwardIcon />}
-          onClick={rightArrow}
-          disabled={characters.length < 10 || loading}
-          ml={2}
-          
-          colorScheme="pink"
-          variant="outline"
-        />}
+        {characters.length === 10 && (
+          <IconButton
+            icon={<ArrowForwardIcon />}
+            onClick={rightArrow}
+            disabled={loading}
+            ml={2}
+            colorScheme="pink"
+            variant="outline"
+          />
+        )}
       </Flex>
     </Box>
   );

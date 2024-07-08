@@ -23,6 +23,17 @@ const Navbar = () => {
             >
               Home
             </Button>
+            </RouterLink>
+            <RouterLink to="/favorites">
+            <Button
+              as={Link}
+              variant="outline"
+              colorScheme="whiteAlpha"
+              size="sm"
+              ml={4}
+            >
+              Favorite list
+            </Button>
           </RouterLink>
         </Flex>
       </Flex>
